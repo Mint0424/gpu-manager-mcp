@@ -8,6 +8,32 @@ Discover NVIDIA, AMD and Intel GPUs, watch utilization / VRAM / temperature /
 power / clocks, keep bounded local history in SQLite, and estimate whether
 your LLM actually fits before you load it.
 
+## Get started in 60 seconds
+
+```bash
+git clone https://github.com/quxlzx/gpu-manager-mcp
+cd gpu-manager-mcp
+python -m venv .venv && .venv/bin/pip install -e .
+.venv/bin/gpu-manager-mcp summary   # sanity check: see your GPUs without any MCP client
+```
+
+Point any MCP client at it (from [`examples/mcp-client-config.json`](examples/mcp-client-config.json)):
+
+```json
+{
+  "mcpServers": {
+    "gpu-manager": {
+      "command": "/path/to/gpu-manager-mcp/.venv/bin/gpu-manager-mcp",
+      "args": ["stdio"]
+    }
+  }
+}
+```
+
+**Feedback welcome** — if a sensor reads wrong on your hardware, or a tool is
+confusing, [open an issue](https://github.com/quxlzx/gpu-manager-mcp/issues);
+validated hardware gets recorded in [docs/hardware-validation.md](docs/hardware-validation.md).
+
 - **Cross-platform backends** — NVML (via `pynvml`) and `nvidia-smi` for
   NVIDIA; amdgpu sysfs (no ROCm needed) and `rocm-smi` fallback for AMD;
   i915/xe sysfs for Intel.

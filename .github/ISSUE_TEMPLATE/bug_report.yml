@@ -1,0 +1,67 @@
+name: Bug report
+description: Something reports wrong, crashes, or lies about a sensor
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Read-only by design: if you see a *write* attempt or shell execution,
+        that is a security issue — report it privately per SECURITY.md instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the exact tool call and the JSON you got back (or the traceback).
+      placeholder: >
+        Called get_gpu_history(gpu_id="amd-0000:03:00.0", metric="temperature_celsius")
+        and got ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: >
+        Note: unavailable sensors should come back as available:false with a
+        reason — never silently zeroed. If a value looks wrong, say why.
+    validations:
+      required: true
+  - type: textarea
+    id: gpu
+    attributes:
+      label: GPU(s) and driver
+      description: >
+        Paste the output of `gpu-manager-mcp summary` (it is safe to share —
+        it contains no personal data).
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS and kernel
+      placeholder: "e.g. Ubuntu 24.04 / kernel 6.8.0-45, Windows 11 24H2"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: gpu-manager-mcp version
+      description: "`gpu-manager-mcp --version`"
+      placeholder: "0.1.0rc1"
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: MCP client used
+      placeholder: "e.g. Claude Desktop, Hermes, own client, or 'none (summary mode)'"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-flight
+      options:
+        - label: I ran `pytest` on a fresh clone and the failure is not a known test-env issue
+          required: false
+        - label: I checked docs/hardware-validation.md for my GPU/driver combination
+          required: false

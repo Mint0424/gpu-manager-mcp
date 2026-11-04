@@ -1,0 +1,51 @@
+name: Feature request
+description: A new tool, backend, metric, or client example
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Hard constraint: gpu-manager-mcp stays **read-only**. Requests for
+        overclocking, fan/voltage control, or process termination will be
+        closed as out of scope.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feature?
+      options:
+        - New GPU backend or vendor support
+        - New metric / sensor source
+        - New MCP tool
+        - Estimator improvement (quantization, architecture table)
+        - Client example or docs
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: A concrete scenario ("I have an Apple Silicon Mac / Intel Arc A770 / ... and cannot ...").
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed shape
+      description: >
+        For tools: name, inputs, and an example response. For backends: which
+        sensor interface (sysfs path, NVML call, CLI) and what it can/cannot read.
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Hardware you can test on
+      description: >
+        Willing to validate on real hardware? Say what you have — validated
+        hardware gets added to docs/hardware-validation.md.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This request does not require the server to write to or control the GPU
+          required: true

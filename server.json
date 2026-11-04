@@ -1,0 +1,45 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.quxlzx/gpu-manager-mcp",
+  "title": "GPU Manager MCP",
+  "description": "Read-only GPU monitoring and LLM-fit planning for NVIDIA, AMD, and Intel GPUs via MCP.",
+  "version": "0.1.0rc1",
+  "repository": {
+    "url": "https://github.com/quxlzx/gpu-manager-mcp",
+    "source": "github",
+    "id": "1435280845"
+  },
+  "websiteUrl": "https://github.com/quxlzx/gpu-manager-mcp",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "gpu-manager-mcp",
+      "registryBaseUrl": "https://pypi.org",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "GPU_MANAGER_SAMPLE_INTERVAL",
+          "description": "Background sampling interval in seconds (default: 2).",
+          "isRequired": false,
+          "format": "number",
+          "default": "2"
+        },
+        {
+          "name": "GPU_MANAGER_HISTORY_RETENTION_HOURS",
+          "description": "Hours of telemetry history to keep in the local SQLite store (default: 24).",
+          "isRequired": false,
+          "format": "number",
+          "default": "24"
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "releaseNote": "Placeholder: gpu-manager-mcp is not yet published on PyPI. Publish the first stable release (pip publish of 0.1.0), then update 'version' here and submit to registry.modelcontextprotocol.io via the io.github.quxlzx namespace."
+    }
+  }
+}

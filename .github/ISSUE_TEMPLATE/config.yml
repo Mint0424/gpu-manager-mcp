@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Hardware validation notes
+    url: https://github.com/quxlzx/gpu-manager-mcp/blob/main/docs/hardware-validation.md
+    about: Check whether your GPU/driver combination is already validated before filing.
+  - name: Contributing guide
+    url: https://github.com/quxlzx/gpu-manager-mcp/blob/main/CONTRIBUTING.md
+    about: How to set up a dev environment, run tests, and open a PR.
+  - name: Security issues
+    url: https://github.com/quxlzx/gpu-manager-mcp/security/advisories/new
+    about: Please report vulnerabilities privately via a security advisory, not a public issue.
